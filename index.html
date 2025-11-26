@@ -1,139 +1,189 @@
 <!DOCTYPE html>
-<html lang="id" x-data="{ darkMode: true }" :class="darkMode ? 'dark' : ''">
+<html lang="id" class="scroll-smooth">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Muhammad Rafie Kurnia - Personal Page</title>
-    <!-- Menggunakan Tailwind CSS dari CDN -->
+    <title>Muhammad Rafie Kurnia - CV / Resume</title>
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+    
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Menggunakan Alpine.js dari CDN -->
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-    <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+
     <style>
-        /* Menggunakan font Inter */
-        body { font-family: 'Inter', sans-serif; }
-        /* Efek smooth scroll */
-        html { scroll-behavior: smooth; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #0f172a; /* Warna dasar gelap */
+            /* Membuat pola grid kotak-kotak ala kertas millimeter block */
+            background-image: linear-gradient(#1e293b 1px, transparent 1px),
+                              linear-gradient(90deg, #1e293b 1px, transparent 1px);
+            background-size: 40px 40px; 
+        }
+        .font-mono { font-family: 'Fira Code', monospace; }
+        
+        /* Hide scrollbar for cleaner look (optional) */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 0; }
+        ::-webkit-scrollbar-thumb:hover { background: #475569; }
     </style>
+
     <script>
-        // Konfigurasi custom warna untuk Tailwind
         tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
-                        'dark-bg': '#121212',
-                        'dark-surface': '#1E1E1E',
-                        'dark-primary': '#EF4444', /* Merah */
-                        'dark-secondary': '#EAB308', /* Kuning */
-                        'dark-text': '#E0E0E0',
-                        'dark-subtext': '#A0A0A0',
+                        'eng-bg': '#0f172a',      /* Background utama (Slate 900) */
+                        'eng-surface': '#1e293b', /* Background Card/Header (Slate 800) */
+                        'eng-border': '#334155',  /* Warna Garis/Border (Slate 700) */
+                        'eng-text': '#f1f5f9',    /* Teks Utama (Slate 100 - Hampir Putih) */
+                        'eng-subtext': '#94a3b8', /* Teks Sekunder (Slate 400 - Abu terang) */
+                        'eng-red': '#ef4444',     /* Aksen Merah (Error/Important) */
+                        'eng-yellow': '#eab308',  /* Aksen Kuning (Warning/Highlight) */
+                        'eng-blue': '#3b82f6',    /* Aksen Biru (Info/Link) */
                     }
                 }
             }
         }
     </script>
 </head>
-<body class="bg-dark-bg text-dark-text transition-colors duration-300">
+<body class="text-eng-text antialiased selection:bg-eng-yellow selection:text-eng-bg">
 
-    <!-- Header & Navigasi -->
-    <header class="bg-dark-surface/80 backdrop-blur-sm sticky top-0 z-50 shadow-md">
+    <header class="bg-eng-bg border-b border-eng-border sticky top-0 z-50">
         <nav class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-xl font-bold text-dark-primary">Rapikur</a>
-            <div class="hidden md:flex items-center space-x-6 text-sm font-medium">
-                <a href="#about" class="hover:text-dark-primary transition-colors">About</a>
-                <a href="#projects" class="hover:text-dark-primary transition-colors">Projects</a>
-                <a href="#skills" class="hover:text-dark-primary transition-colors">Skills</a>
-                <a href="#experience" class="hover:text-dark-primary transition-colors">Experience</a>
-                <a href="#contact" class="hover:text-dark-primary transition-colors">Contact</a>
+            <a href="#" class="text-xl font-bold font-mono tracking-tighter text-eng-red">
+                &lt;Rapikur /&gt;
+            </a>
+            
+            <div class="hidden md:flex items-center gap-8 font-mono text-sm text-eng-subtext">
+                <div class="flex gap-6">
+                    <a href="#about" class="hover:text-eng-yellow transition-colors">./About</a>
+                    <a href="#projects" class="hover:text-eng-yellow transition-colors">./Projects</a>
+                    <a href="#experience" class="hover:text-eng-yellow transition-colors">./Exp</a>
+                </div>
+
+                <div class="h-4 w-px bg-eng-border"></div>
+
+                <a href="assets/doc/cv-rafie.pdf" target="_blank" 
+                   class="flex items-center gap-2 text-eng-text hover:text-eng-red transition-colors group">
+                    <svg class="w-4 h-4 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                    RESUME.PDF
+                </a>
             </div>
-            <!-- Mobile Menu Button could be added here -->
         </nav>
     </header>
 
-    <main class="max-w-4xl mx-auto p-6 space-y-16">
+    <main class="max-w-4xl mx-auto px-6 pb-20">
 
-        <!-- Hero Section -->
-        <section id="hero" class="text-center pt-16">
-            <h1 class="text-4xl md:text-5xl font-extrabold mb-2">Muhammad Rafie Kurnia</h1>
-            <p class="text-lg text-dark-secondary font-medium">Software Engineering | Web Development | Cybersecurity</p>
-        </section>
-
-        <!-- Tentang Saya -->
-        <section id="about">
-            <h2 class="text-3xl font-bold mb-4 border-b-2 border-dark-primary/30 pb-2">About Me</h2>
-            <p class="text-dark-subtext leading-relaxed">
-                Hello! I'm a final-year Computer Science student at Bina Nusantara University, deeply passionate about the realms of Software Engineering and Cybersecurity. I enjoy building robust and secure web applications and am always eager to learn new technologies. My goal is to leverage my skills to create impactful digital solutions while continuously exploring the ever-evolving landscape of cyber threats and defenses.
+        <section id="hero" class="pt-24 pb-16 text-center">
+            <div class="inline-block px-3 py-1 mb-6 border border-eng-yellow text-eng-yellow font-mono text-xs bg-eng-yellow/10">
+                printf("HELLO WORLD");
+            </div>
+            
+            <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight mb-4 text-eng-text">
+                Muhammad Rafie Kurnia
+            </h1>
+            
+            <p class="text-xl text-eng-subtext font-mono mb-10">
+                <span class="text-eng-red">Software Engineering</span> | 
+                <span class="text-eng-blue">Web Development</span> | 
+                <span class="text-eng-yellow">Cybersecurity</span>
             </p>
+
+            <div class="flex justify-center gap-4">
+                <a href="assets/doc/cv-rafie.pdf" target="_blank" 
+                   class="flex items-center gap-2 px-6 py-3 bg-eng-red text-eng-bg font-bold font-mono hover:bg-red-500 transition-colors">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    DOWNLOAD_CV
+                </a>
+                <a href="#contact" 
+                   class="px-6 py-3 border border-eng-border text-eng-subtext font-mono hover:border-eng-text hover:text-eng-text transition-colors">
+                    CONTACT_ME
+                </a>
+            </div>
         </section>
 
-        <!-- Projek dengan Filter Alpine.js -->
-        <section id="projects" x-data="{
+        <section id="about" class="mb-20">
+            <div class="border border-eng-border bg-eng-bg p-8 relative">
+                <div class="absolute top-0 left-0 w-2 h-2 bg-eng-red"></div>
+                <div class="absolute bottom-0 right-0 w-2 h-2 bg-eng-red"></div>
+
+                <h2 class="text-2xl font-mono font-bold mb-6 flex items-center text-eng-text">
+                    <span class="text-eng-red mr-3">#</span> ABOUT_ME
+                </h2>
+                <p class="text-eng-subtext leading-relaxed text-lg">
+                    Hello! I'm a final-year <strong class="text-eng-text">Computer Science student</strong> at Bina Nusantara University. 
+                    I don't just write code; I debug life. Passionate about building robust systems and breaking them (ethically) to make them stronger. 
+                    Currently focused on creating efficient web solutions while deep-diving into the world of cybersecurity.
+                </p>
+            </div>
+        </section>
+
+        <section id="projects" class="mb-20" x-data="{
             selectedTag: 'all',
-            tags: ['all', 'laravel', 'filament', 'tall'],
-            projects: [
-                {
-                    title: 'ERP Syariah UMKM',
-                    desc: 'A comprehensive ERP system for SMEs based on Sharia principles, built with the TALL stack.',
-                    tags: ['laravel', 'tall'],
-                    github: '#',
-                    live: '#'
-                },
-                {
-                    title: 'Heart Hospital Dashboard',
-                    desc: 'An admin dashboard for managing hospital data, focusing on cardiac patient information using Laravel Filament.',
-                    tags: ['laravel', 'filament'],
-                    github: '#',
-                    live: '#'
-                },
-                {
-                    title: 'Kalkulator Syariah',
-                    desc: 'A simple, free, and easy to use calculator for syariah based calculation.',
-                    tags: ['javascript', 'alpine'],
-                    github: '#',
-                    live: null
+            projects: [],
+            async init() {
+                try {
+                    const response = await fetch('assets/src/projects.json');
+                    const data = await response.json();
+                    this.projects = data.projects;
+                } catch (error) {
+                    console.error('Error loading projects:', error);
+                    // Dummy data fallback jika fetch gagal (untuk preview lokal tanpa server)
+                    this.projects = [
+                       { title: 'Project Load Failed', desc: 'Please run via local server (VS Code Live Server) to load JSON.', tags: ['error'] }
+                    ];
                 }
-            ]
-        }">
-            <h2 class="text-3xl font-bold mb-4 border-b-2 border-dark-primary/30 pb-2">Projects</h2>
-            <!-- Tombol Filter -->
-            <div class="flex flex-wrap gap-2 mb-8">
+            }
+        }" x-init="init()">
+            <h2 class="text-2xl font-mono font-bold mb-6 flex items-center text-eng-text">
+                <span class="text-eng-yellow mr-3">#</span> PROJECTS
+            </h2>
+
+            <div class="flex flex-wrap gap-3 mb-8">
+                <button @click="selectedTag = 'all'"
+                    :class="selectedTag === 'all' ? 'bg-eng-yellow text-eng-bg border-eng-yellow' : 'bg-eng-bg text-eng-subtext border-eng-border hover:border-eng-yellow'"
+                    class="px-4 py-1 text-sm font-mono border transition-all">
+                    [ALL]
+                </button>
                 <template x-for="tag in [...new Set(projects.flatMap(p => p.tags))].sort()">
                     <button @click="selectedTag = tag"
-                        :class="selectedTag === tag ? 'bg-dark-primary text-dark-bg' : 'bg-dark-surface text-dark-subtext'"
-                        class="px-3 py-1 text-sm font-medium rounded-full transition-colors capitalize">
-                        <span x-text="tag"></span>
+                        :class="selectedTag === tag ? 'bg-eng-yellow text-eng-bg border-eng-yellow' : 'bg-eng-bg text-eng-subtext border-eng-border hover:border-eng-yellow'"
+                        class="px-4 py-1 text-sm font-mono border uppercase transition-all">
+                        [<span x-text="tag"></span>]
                     </button>
                 </template>
-                 <button @click="selectedTag = 'all'"
-                        :class="selectedTag === 'all' ? 'bg-dark-primary text-dark-bg' : 'bg-dark-surface text-dark-subtext'"
-                        class="px-3 py-1 text-sm font-medium rounded-full transition-colors">
-                    Show All
-                </button>
             </div>
 
-            <!-- Daftar Proyek (Kartu) -->
             <div class="grid md:grid-cols-2 gap-6">
                 <template x-for="project in projects" :key="project.title">
                     <div x-show="selectedTag === 'all' || project.tags.includes(selectedTag)"
-                         x-transition:enter="transition ease-out duration-300"
-                         x-transition:enter-start="opacity-0 transform scale-90"
-                         x-transition:enter-end="opacity-100 transform scale-100"
-                         class="bg-dark-surface p-6 rounded-lg shadow-lg hover:shadow-dark-primary/20 transition-shadow">
-                        <h3 class="text-xl font-bold mb-2 text-dark-secondary" x-text="project.title"></h3>
-                        <p class="text-dark-subtext mb-4" x-text="project.desc"></p>
-                        <div class="flex flex-wrap gap-2 mb-4">
+                         class="group bg-eng-surface border border-eng-border p-6 hover:border-eng-yellow transition-colors relative overflow-hidden">
+                        
+                        <div class="absolute top-0 left-0 w-full h-1 bg-eng-border group-hover:bg-eng-yellow transition-colors"></div>
+
+                        <h3 class="text-xl font-bold mb-3 text-eng-text font-mono" x-text="project.title"></h3>
+                        <p class="text-eng-subtext mb-6 text-sm leading-relaxed" x-text="project.desc"></p>
+                        
+                        <div class="flex flex-wrap gap-2 mb-6">
                             <template x-for="tag in project.tags">
-                                <span class="bg-gray-700 text-dark-subtext text-xs font-semibold px-2.5 py-1 rounded-full" x-text="tag"></span>
+                                <span class="text-xs font-mono text-eng-yellow bg-eng-bg border border-eng-border px-2 py-1" x-text="tag"></span>
                             </template>
                         </div>
-                        <div class="flex items-center space-x-4">
-                            <a :href="project.github" target="_blank" class="text-dark-primary hover:underline">GitHub</a>
+
+                        <div class="flex items-center space-x-4 text-sm font-mono border-t border-eng-border pt-4 mt-auto">
+                            <a :href="project.github" target="_blank" class="flex items-center text-eng-subtext hover:text-eng-text transition-colors">
+                                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                                REPO
+                            </a>
                             <template x-if="project.live">
-                               <a :href="project.live" target="_blank" class="text-dark-secondary hover:underline">Live Demo</a>
+                                <a :href="project.live" target="_blank" class="flex items-center text-eng-subtext hover:text-eng-text transition-colors">
+                                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                                    DEPLOY
+                                </a>
                             </template>
                         </div>
                     </div>
@@ -141,93 +191,97 @@
             </div>
         </section>
 
-        <!-- Skill -->
-        <section id="skills">
-            <h2 class="text-3xl font-bold mb-6 border-b-2 border-dark-primary/30 pb-2">Skills</h2>
-            <div class="space-y-4">
-                 <div>
-                    <h3 class="font-semibold text-lg text-dark-secondary mb-2">Programming Languages & Frameworks</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="bg-dark-surface px-3 py-1 rounded-md">PHP / Laravel</span>
-                        <span class="bg-dark-surface px-3 py-1 rounded-md">JavaScript / Alpine.js</span>
-                        <span class="bg-dark-surface px-3 py-1 rounded-md">Python (Basic)</span>
-                        <span class="bg-dark-surface px-3 py-1 rounded-md">HTML & CSS</span>
-                        <span class="bg-dark-surface px-3 py-1 rounded-md">C Language</span>
-                        <span class="bg-dark-surface px-3 py-1 rounded-md">Go Language</span>
-                    </div>
-                </div>
+        <section id="skills" class="mb-20">
+            <h2 class="text-2xl font-mono font-bold mb-8 flex items-center text-eng-text">
+                <span class="text-eng-blue mr-3">#</span> SKILL_SET
+            </h2>
+            
+            <div class="space-y-8">
                 <div>
-                    <h3 class="font-semibold text-lg text-dark-secondary mb-2">Tools & Platforms</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="bg-dark-surface px-3 py-1 rounded-md">Git & GitHub</span>
-                        <span class="bg-dark-surface px-3 py-1 rounded-md">Docker (Basic)</span>
-                        <span class="bg-dark-surface px-3 py-1 rounded-md">Linux</span>
+                    <h3 class="text-sm font-mono text-eng-subtext uppercase tracking-wider mb-3 border-b border-eng-border pb-1 inline-block">Languages & Frameworks</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="bg-eng-surface border border-eng-border text-eng-text px-4 py-2 font-mono text-sm">PHP / Laravel</span>
+                        <span class="bg-eng-surface border border-eng-border text-eng-text px-4 py-2 font-mono text-sm">JS / Alpine.js</span>
+                        <span class="bg-eng-surface border border-eng-border text-eng-text px-4 py-2 font-mono text-sm">Python</span>
+                        <span class="bg-eng-surface border border-eng-border text-eng-text px-4 py-2 font-mono text-sm">Golang</span>
+                        <span class="bg-eng-surface border border-eng-border text-eng-text px-4 py-2 font-mono text-sm">C Language</span>
                     </div>
                 </div>
+
                 <div>
-                    <h3 class="font-semibold text-lg text-dark-secondary mb-2">Languages</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="bg-dark-surface px-3 py-1 rounded-md">Indonesian (Native)</span>
-                        <span class="bg-dark-surface px-3 py-1 rounded-md">English (Work Proficiency)</span>
-                        <span class="bg-dark-surface px-3 py-1 rounded-md">Japanese (Limited)</span>
-                    </div>
-                </div>
-                 <div>
-                    <h3 class="font-semibold text-lg text-dark-secondary mb-2">Others</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="bg-dark-surface px-3 py-1 rounded-md">Cybersecurity (Fundamental)</span>
-                        <span class="bg-dark-surface px-3 py-1 rounded-md">IoT (ESP32)</span>
+                    <h3 class="text-sm font-mono text-eng-subtext uppercase tracking-wider mb-3 border-b border-eng-border pb-1 inline-block">Tools & System</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="bg-eng-surface border border-eng-border text-eng-text px-4 py-2 font-mono text-sm">Git & GitHub</span>
+                        <span class="bg-eng-surface border border-eng-border text-eng-text px-4 py-2 font-mono text-sm">Linux / Bash</span>
+                        <span class="bg-eng-surface border border-eng-border text-eng-text px-4 py-2 font-mono text-sm">Docker</span>
+                        <span class="bg-eng-surface border border-eng-border text-eng-text px-4 py-2 font-mono text-sm">ESP32 IoT</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Pengalaman -->
-        <section id="experience">
-             <h2 class="text-3xl font-bold mb-6 border-b-2 border-dark-primary/30 pb-2">Education & Experience</h2>
-             <!-- Pendidikan -->
-             <div class="mb-8">
-                 <h3 class="text-xl font-semibold text-dark-secondary mb-3">Education</h3>
-                 <ul class="list-disc ml-5 space-y-2 text-dark-subtext">
-                    <li>(Bachelor) Computer Science - Bina Nusantara University (2022 - now)</li>
-                    <li>(Highschool)Math and Natural Science - SMA Al-Islam 1 Surakarta (2019 - 2022)</li>
-                 </ul>
-             </div>
-             <!-- Pekerjaan & Organisasi -->
-             <div>
-                 <h3 class="text-xl font-semibold text-dark-secondary mb-3">Work & Organization</h3>
-                 <ul class="list-disc ml-5 space-y-2 text-dark-subtext">
-                    <li>Intern - PT Hartono Istana Teknologi (2025) - Web Developer</li>
-                    <li>Himpunan Mahasiswa Teknik Informatika (2024 - 2025)</li>
-                    <li>Majelis Taklim Al-Khawarizmi (2023 - 2025)</li>
-                    <li>Committe Leader for Charvertising Volunteering Program (2024)</li>
-                 </ul>
-             </div>
+        <section id="experience" class="mb-20 pt-10 border-t border-eng-border">
+            <h2 class="text-2xl font-mono font-bold mb-10 text-eng-text flex items-center">
+                <span class="text-eng-red mr-3">></span> ./EXEC_EXPERIENCE
+            </h2>
+
+            <div class="space-y-12">
+                <div class="relative pl-8 border-l border-eng-border">
+                    <div class="absolute -left-[5px] top-2 w-2 h-2 bg-eng-yellow"></div>
+                    
+                    <div class="flex flex-col md:flex-row md:justify-between mb-2 items-start md:items-center">
+                        <h3 class="text-xl font-bold text-eng-text">Web Developer Intern</h3>
+                        <span class="font-mono text-eng-yellow text-xs bg-eng-bg px-2 py-1 border border-eng-border mt-2 md:mt-0">Feb 2025 - Present</span>
+                    </div>
+                    
+                    <div class="text-eng-subtext font-mono text-sm mb-4">PT Hartono Istana Teknologi (Polytron)</div>
+                    
+                    <ul class="list-none space-y-2 text-eng-subtext text-sm">
+                        <li class="flex items-start">
+                            <span class="text-eng-blue mr-2">></span>
+                            Developing internal web applications using Laravel & JQuery.
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-eng-blue mr-2">></span>
+                            Debugging more than 10 internal programs.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="relative pl-8 border-l border-eng-border">
+                    <div class="absolute -left-[5px] top-2 w-2 h-2 bg-eng-red"></div>
+                    
+                    <div class="flex flex-col md:flex-row md:justify-between mb-2 items-start md:items-center">
+                        <h3 class="text-xl font-bold text-eng-text">Computer Science (Bachelor)</h3>
+                        <span class="font-mono text-eng-yellow text-xs bg-eng-bg px-2 py-1 border border-eng-border mt-2 md:mt-0">2022 - Present</span>
+                    </div>
+                    <div class="text-eng-subtext font-mono text-sm mb-4">Bina Nusantara University</div>
+                </div>
+            </div>
         </section>
 
-        <!-- Kontak -->
-        <section id="contact" class="text-center pt-10">
-            <h2 class="text-3xl font-bold mb-2">Get In Touch</h2>
-            <p class="text-dark-subtext mb-6 max-w-lg mx-auto">I'm currently open to new opportunities and collaborations. Feel free to reach out!</p>
-            <div class="flex justify-center items-center space-x-6">
-                <a href="mailto:youremail@example.com" class="text-dark-subtext hover:text-dark-primary transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+        <section id="contact" class="text-center pt-10 pb-10">
+            <h2 class="text-2xl font-bold mb-2 text-eng-text font-mono">INITIATE_CONTACT</h2>
+            <p class="text-eng-subtext mb-8 max-w-lg mx-auto">Open for collaboration. Encrypted channels available.</p>
+            
+            <div class="flex justify-center items-center gap-6">
+                <a href="mailto:youremail@example.com" class="p-3 border border-eng-border text-eng-subtext hover:text-eng-red hover:border-eng-red transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                 </a>
-                <a href="https://github.com/lemonaddict/" target="_blank" class="text-dark-subtext hover:text-dark-primary transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                <a href="https://github.com/lemonaddict/" target="_blank" class="p-3 border border-eng-border text-eng-subtext hover:text-eng-text hover:border-eng-text transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
                 </a>
-                <a href="https://www.linkedin.com/in/muhammad-rafie-kurni4/" target="_blank" class="text-dark-subtext hover:text-dark-primary transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                <a href="https://www.linkedin.com/in/muhammad-rafie-kurni4/" target="_blank" class="p-3 border border-eng-border text-eng-subtext hover:text-eng-blue hover:border-eng-blue transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
                 </a>
             </div>
         </section>
 
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-dark-surface mt-20">
-        <div class="max-w-4xl mx-auto p-4 text-center text-dark-subtext text-sm">
-            <p>&copy; <span x-text="new Date().getFullYear()"></span> Muhammad Rafie Kurnia - All Rights Reserved</p>
+    <footer class="bg-eng-bg border-t border-eng-border py-8 mt-10">
+        <div class="max-w-4xl mx-auto px-6 text-center text-eng-subtext text-xs font-mono">
+            <p>&copy; <span x-text="new Date().getFullYear()"></span> RAFIE_KURNIA. ALL SYSTEMS OPERATIONAL.</p>
         </div>
     </footer>
 </body>

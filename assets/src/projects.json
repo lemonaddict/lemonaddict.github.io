@@ -1,0 +1,32 @@
+{
+    "projects" : [
+        {
+            "title": "Kalkulator Syariah",
+            "desc": "A simple, free, and easy to use calculator for syariah based calculation.",
+            "tags": ["tailwind", "alpine"],
+            "github": "https://github.com/lemonaddict/kalkulator-syariah",
+            "live": "https://lemonaddict.github.io/kalkulator-syariah/"
+        },
+        {
+            "title": "PerpusQu",
+            "desc": "A basic library books lending app using OOP concepts and java language.",
+            "tags": ["java", "OOP"],
+            "github": "https://github.com/lemonaddict/perpusqu",
+            "live": "#"
+        },
+        {
+            "title": "Heart Hospital Dashboard",
+            "desc": "An admin dashboard for managing hospital data, focusing on cardiac patient information using Laravel Filament.",
+            "tags": ["laravel", "filament"],
+            "github": "https://github.com/lemonaddict/Web-CRUD-Rumah-Sakit-Jantung-Abadi",
+            "live": "#"
+        },
+        {
+            "title": "ERP Syariah UMKM",
+            "desc": "A comprehensive ERP system for SMEs based on Sharia principles, built with the TALL stack.",
+            "tags": ["laravel", "tall"],
+            "github": "#",
+            "live": "#"
+        }
+    ]
+}
